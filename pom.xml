@@ -98,7 +98,7 @@
         </repository>
         <repository>
             <id>nukkitx-repo</id>
-            <url>https://repo.nukkitx.com/maven-snapshots/</url>
+            <url>https://repo.nukkitx.com/maven-releases/</url>
         </repository>
     </repositories>
 
