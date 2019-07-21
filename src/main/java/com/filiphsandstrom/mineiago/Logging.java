@@ -3,8 +3,6 @@ package com.filiphsandstrom.mineiago;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -29,19 +27,18 @@ public class Logging {
             }
         }
     }
-
+    
     private void Print(String msg) {
         if(MineiaGo.getInstance().getConfig().getLoglevel() >= 3)
             return;
-
+            
         String file_content;
         PrintWriter printer;
         try {
-            file_content = Files.readString(loggingFile.toPath(), StandardCharsets.UTF_8);
             printer = new PrintWriter(new FileWriter(loggingFile));
         } catch (Exception e) {
             e.printStackTrace();
-
+            
             MineiaGo.getInstance().getLogger()
                     .warning("Failed to log message. Do we have the right directory permissions or is the disk full?");
             return;
@@ -51,7 +48,7 @@ public class Logging {
         Date date = new Date();
 
         String output = "[" + dateFormat.format(date) + "]" + msg + "\n";
-        printer.print(file_content + output);
+        printer.print(output);
         printer.close();
     }
 
